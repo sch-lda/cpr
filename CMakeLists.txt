@@ -199,15 +199,6 @@ if(CPR_USE_SYSTEM_CURL)
 else()
     message(STATUS "Configuring built-in curl...")
 
-    # ZLIB is optional for curl
-    # to disable it:
-    # * from command line:
-    #     -DCURL_ZLIB=OFF
-    # * from CMake script:
-    if (CURL_ZLIB OR CURL_ZLIB STREQUAL AUTO OR NOT DEFINED CACHE{CURL_ZLIB})
-        include(cmake/zlib_external.cmake)
-    endif()
-
     if (CPR_ENABLE_CURL_HTTP_ONLY)
         # We only need HTTP (and HTTPS) support:
         set(HTTP_ONLY ON CACHE INTERNAL "" FORCE)
